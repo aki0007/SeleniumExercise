@@ -1,0 +1,16 @@
+allure-behave
+allure-pytest
+allure-python-commons
+behave
+cryptography
+packaging
+Pillow
+pip
+pytest
+pytest-lazy-fixture
+requests
+selenium
+toml
+virtualenv
+pre-commit
+safety
