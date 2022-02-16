@@ -1,0 +1,9 @@
+allure-behave
+allure-pytest
+allure-python-commons
+behave
+pytest
+requests
+selenium
+virtualenv
+pre-commit
