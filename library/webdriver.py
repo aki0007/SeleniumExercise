@@ -20,16 +20,20 @@ class WebDriver(Chrome):
         try:
             # Wait until element is clickable
             element = WebDriverWait(self, 5).until(
-                EC.presence_of_element_located((By.XPATH, locator)))
+                EC.presence_of_element_located((By.XPATH, locator))
+            )
 
             # Highlight element
             if highlight:
-                self.execute_script("arguments[0].setAttribute('style', 'background: yellow;');", element)
+                self.execute_script(
+                    "arguments[0].setAttribute('style', 'background: yellow;');",
+                    element,
+                )
 
-            return self.find_element_by_xpath(locator)
+            return self.find_element(By.XPATH, locator)
 
         except ElementNotInteractableException:
-            return self.find_element_by_xpath(locator)
+            return self.find_element(By.XPATH, locator)
 
     def safe_send_keys(self, input_text: str, locator):
         self.get_element(locator).click()
@@ -44,7 +48,8 @@ class WebDriver(Chrome):
     def check_if_element_exists(self, locator):
         try:
             WebDriverWait(self, 5).until(
-                EC.presence_of_element_located((By.XPATH, locator)))
+                EC.presence_of_element_located((By.XPATH, locator))
+            )
         except TimeoutException:
             return False
         return True
@@ -59,10 +64,14 @@ class WebDriver(Chrome):
             # wait for loading element to appear
             # - required to prevent prematurely checking if element
             #   has disappeared, before it has had a chance to appear
-            WebDriverWait(self, 20).until(EC.presence_of_element_located((By.XPATH, locator)))
+            WebDriverWait(self, 20).until(
+                EC.presence_of_element_located((By.XPATH, locator))
+            )
             self.get_element(locator)
             # then wait for the element to disappear
-            WebDriverWait(self, 20).until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            WebDriverWait(self, 20).until_not(
+                EC.presence_of_element_located((By.XPATH, locator))
+            )
 
         except TimeoutException:
             # if timeout exception was raised - it may be safe to
@@ -74,5 +83,5 @@ class WebDriver(Chrome):
     def take_screenshot(self):
         today = date.today()
         path = read_config_data("Details", "SCREENSHOT")
-        ss_path = path + today.strftime('%d-%m-%Y') + ".png"
+        ss_path = path + today.strftime("%d-%m-%Y") + ".png"
         self.get_screenshot_as_file(ss_path)
