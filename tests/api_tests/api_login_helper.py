@@ -12,4 +12,3 @@ def login_request(url=None, data=None):
     r = requests.post(url=url, data=body_template)
 
     assert r.status_code == 200
-

@@ -4,7 +4,7 @@ import time
 from base.enums import NavigationTab, HomeTab
 from base.locators import Locators
 from base.data import register_data, login_data
-from tests.features.helpers.utils import select_date
+from tests.helpers.utils import select_date
 
 
 @allure.step

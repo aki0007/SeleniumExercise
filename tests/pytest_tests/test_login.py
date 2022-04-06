@@ -1,5 +1,15 @@
 import pytest
+import time
 from base.utils import read_config_data
+from tests.helpers.login_helper import (
+    set_registration_personal_details,
+    select_register_dropdown_options,
+    accept_terms_and_conditions,
+    click_sign_up_button,
+    login_with_username_and_password,
+    get_random_user
+)
+from tests.validation.validate_login import validate_login, validate_random_user
 
 
 @pytest.mark.register
