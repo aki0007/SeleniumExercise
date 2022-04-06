@@ -1,5 +1,5 @@
 import pytest
-from library.webdriver import WebDriver
+from base.webdriver import WebDriver
 
 
 @pytest.fixture(scope="session")
