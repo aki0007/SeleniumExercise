@@ -88,7 +88,10 @@ class WebDriver(Chrome):
             assert False, "wait_for_loader_to_load(): TimeoutException"
 
     def take_screenshot(self) -> None:
+        """
+        Take screenshot and save it to reports/screenshot/current_date folder
+        """
         screenshot_name: str = (
-            "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
+                "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
         )
         self.save_screenshot(config.SCREENSHOT_PATH + "/" + screenshot_name)
