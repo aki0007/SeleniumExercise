@@ -9,7 +9,9 @@ class Locators:
     LOGIN_TAB = "//li[descendant::input[@id='tab2']]"
     LOGIN_USERNAME = "//input[@placeholder='Username']"
     LOGIN_PASSWORD = "//input[@placeholder='mypassword']"
-    LOGIN_KEEP_ME_LOGGED_IN = "//em[text()='Keep me logged in ']/preceding-sibling::input"
+    LOGIN_KEEP_ME_LOGGED_IN = (
+        "//em[text()='Keep me logged in ']/preceding-sibling::input"
+    )
     LOGIN_BUTTON = "//input[@value='Login']"
 
     GENERAL_BUTTON = "//button[text()='{text}']"
@@ -30,12 +32,16 @@ class Locators:
     REGISTRATION_STATE = "//select[@name='state']"
     REGISTRATION_CITY = "//select[@name='city']"
     REGISTRATION_ZIP_CODE = "//input[@name='zip']"
-    REGISTRATION_TERMS_AND_CONDITIONS = "//em[text()='I agree with terms and conditions ']/preceding-sibling::input"
+    REGISTRATION_TERMS_AND_CONDITIONS = (
+        "//em[text()='I agree with terms and conditions ']/preceding-sibling::input"
+    )
 
     SIGN_UP_BUTTON = "//input[@value='Sign up']"
 
     NAVIGATION_TAB = "//li[descendant::a[contains(text(), '{tab}')]]"
-    SUB_NAVIGATION_TAB = "//ul[@class='dropdown-menu']//li[descendant::a[contains(text(), '{tab}')]]"
+    SUB_NAVIGATION_TAB = (
+        "//ul[@class='dropdown-menu']//li[descendant::a[contains(text(), '{tab}')]]"
+    )
 
     VALIDATE_SUCCESSFUL_LOGIN = "//*[text() = ' Welcome Mr. {username}']"
     VALIDATE_GENERATED_USER = "//div[contains(text(), 'First Name')]"

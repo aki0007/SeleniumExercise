@@ -1,21 +1,23 @@
 from datetime import datetime
+from typing import Sequence
+
+from selenium.common.exceptions import ElementNotInteractableException, TimeoutException
+from selenium.webdriver import Chrome
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select, WebDriverWait
 
 from config import config
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver import Chrome
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementNotInteractableException, TimeoutException
-from selenium.webdriver.support.ui import Select
 
 
 class WebDriver(Chrome):
-    def set_window(self):
+    def set_window(self) -> None:
         self.get(config.GLOBAL_URL + config.TESTING_URL)
         self.maximize_window()
 
-    def get_element(self, locator, highlight=True, clickable=True):
+    def get_element(self, locator: str, clickable: bool = True, highlight: bool = True):
         try:
             # Wait until element is clickable
             if clickable:
@@ -24,7 +26,7 @@ class WebDriver(Chrome):
                 )
 
             # Wait until element is clickable
-            element = WebDriverWait(self, 5).until(
+            element: WebElement = WebDriverWait(self, 5).until(
                 EC.presence_of_element_located((By.XPATH, locator))
             )
 
@@ -40,17 +42,17 @@ class WebDriver(Chrome):
         except ElementNotInteractableException:
             return self.find_element(By.XPATH, locator)
 
-    def safe_send_keys(self, input_text: str, locator):
+    def safe_send_keys(self, input_text: Sequence[str], locator: str) -> None:
         self.get_element(locator).click()
-        action = ActionChains(self)
+        action: ActionChains = ActionChains(self)
         action.send_keys(input_text)
         action.perform()
 
-    def select_from_dropdown(self, locator, dropdown_menu):
-        select = Select(self.get_element(locator))
+    def select_from_dropdown(self, locator: str, dropdown_menu: Sequence[str]) -> None:
+        select: Select = Select(self.get_element(locator))
         select.select_by_value(dropdown_menu)
 
-    def check_if_element_exists(self, locator):
+    def check_if_element_exists(self, locator: str) -> bool:
         try:
             WebDriverWait(self, 5).until(
                 EC.presence_of_element_located((By.XPATH, locator))
@@ -59,12 +61,12 @@ class WebDriver(Chrome):
             return False
         return True
 
-    def hover_element(self, locator):
-        element = self.get_element(locator)
-        hov = ActionChains(self).move_to_element(to_element=element)
-        hov.perform()
+    def hover_element(self, locator: str) -> None:
+        element: WebElement = self.get_element(locator)
+        hover: ActionChains = ActionChains(self).move_to_element(to_element=element)
+        hover.perform()
 
-    def wait_for_loader_to_load(self, locator):
+    def wait_for_loader_to_load(self, locator) -> None:
         try:
             # wait for loading element to appear
             # - required to prevent prematurely checking if element
@@ -85,8 +87,8 @@ class WebDriver(Chrome):
             # appropriately.
             assert False, "wait_for_loader_to_load(): TimeoutException"
 
-    def take_screenshot(self):
+    def take_screenshot(self) -> None:
         screenshot_name: str = (
-                "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
+            "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
         )
         self.save_screenshot(config.SCREENSHOT_PATH + "/" + screenshot_name)

@@ -1,5 +1,6 @@
 import pytest
-from tests.api.api_login_helper import *
+
+from tests.api.login_helper import login_request
 
 
 @pytest.mark.api

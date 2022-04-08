@@ -1,5 +1,7 @@
 #noinspection CucumberUndefinedStep
+
 Feature: Run tests with behave
+  @login @regression
   Scenario: Login to the testing world page
     Given Navigate to testing page
     When Login to page with username "None" and password "None"
