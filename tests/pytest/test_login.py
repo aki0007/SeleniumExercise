@@ -52,5 +52,6 @@ def test_generate_user(driver, close_driver):
     get_random_user(driver)
     # Validate random user
     validate_random_user(driver)
+    # Take SS from pytest
     driver.take_screenshot()
     time.sleep(2)

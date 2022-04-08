@@ -22,4 +22,5 @@ Feature: Run tests with behave
     And Click on "Start Download" button
     Then Wait for progress loader to load
     And Validate successful download
+    Then Take screenshot
     When Click on "Close" button

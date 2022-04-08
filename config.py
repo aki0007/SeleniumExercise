@@ -13,7 +13,9 @@ class Config:
     TESTING_URL = os.getenv("TESTING_URL", "/testing")
     LOGIN_USERNAME = os.getenv("LOGIN_USERNAME", "user")
     LOGIN_PASSWORD = os.getenv("LOGIN_PASSWORD", "1234")
-    SCREENSHOT_PATH = "reports/screenshots/" + datetime.now().strftime("%d-%m-%Y")
+    SCREENSHOT_PATH = os.path.abspath(
+        "reports/screenshots/" + datetime.now().strftime("%d-%m-%Y")
+    )
 
 
 config = Config()
