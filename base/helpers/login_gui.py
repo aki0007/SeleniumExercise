@@ -3,24 +3,24 @@ from typing import Optional
 
 import allure
 
-from base.data import login_data, register_data
+from base.data import LOGIN_DATA, REGISTER_DATA
 from base.enums import HomeTab, NavigationTab
 from base.locators import Locators
 from base.webdriver import WebDriver
-from tests.helpers.utils import select_date
+from base.helpers.utils import select_date
 
 
 @allure.step
 def login_with_username_and_password(
-    driver: WebDriver, username: Optional[str], password: Optional[str]
+    driver: WebDriver, username: Optional[str] = None, password: Optional[str] = None
 ) -> None:
     # Check if user is already login
     if not driver.check_if_element_exists(Locators.LOGIN_BUTTON):
         return
 
     # Choose default username and password if they are not defined
-    username = login_data["username"] if not username else username
-    password = login_data["password"] if not password else password
+    username = LOGIN_DATA["username"] if not username else username
+    password = LOGIN_DATA["password"] if not password else password
 
     # Click on Login tab
     driver.get_element(Locators.LOGIN_TAB).click()
@@ -35,36 +35,36 @@ def login_with_username_and_password(
 @allure.step
 def set_registration_personal_details(driver: WebDriver) -> None:
     # Set username, email and password
-    driver.safe_send_keys(register_data["username"], Locators.REGISTRATION_USERNAME)
-    driver.safe_send_keys(register_data["email"], Locators.REGISTRATION_EMAIL)
-    driver.safe_send_keys(register_data["password"], Locators.REGISTRATION_PASSWORD)
+    driver.safe_send_keys(REGISTER_DATA["username"], Locators.REGISTRATION_USERNAME)
+    driver.safe_send_keys(REGISTER_DATA["email"], Locators.REGISTRATION_EMAIL)
+    driver.safe_send_keys(REGISTER_DATA["password"], Locators.REGISTRATION_PASSWORD)
     driver.safe_send_keys(
-        register_data["password"], Locators.REGISTRATION_CONFIRM_PASSWORD
+        REGISTER_DATA["password"], Locators.REGISTRATION_CONFIRM_PASSWORD
     )
     # Set date
-    select_date(driver, register_data["phone"])
+    select_date(driver, REGISTER_DATA["dob"])
     # Set phone, address, address type
-    driver.safe_send_keys(register_data["phone"], Locators.REGISTRATION_PHONE)
-    driver.safe_send_keys(register_data["address"], Locators.REGISTRATION_ADDRESS)
+    driver.safe_send_keys(REGISTER_DATA["phone"], Locators.REGISTRATION_PHONE)
+    driver.safe_send_keys(REGISTER_DATA["address"], Locators.REGISTRATION_ADDRESS)
 
 
 @allure.step
 def select_register_dropdown_options(driver: WebDriver) -> None:
     driver.get_element(
         Locators.REGISTRATION_ADDRESS_TYPE.format(
-            address_type=register_data["address_type"][0]
+            address_type=REGISTER_DATA["address_type"][0]
         ),
         highlight=False,
     ).click()
     # Set gender, country, state and city
-    driver.select_from_dropdown(Locators.REGISTRATION_GENDER, register_data["gender"])
-    driver.select_from_dropdown(Locators.REGISTRATION_COUNTRY, register_data["country"])
+    driver.select_from_dropdown(Locators.REGISTRATION_GENDER, REGISTER_DATA["gender"])
+    driver.select_from_dropdown(Locators.REGISTRATION_COUNTRY, REGISTER_DATA["country"])
     # Page requires 3 seconds sleep
     time.sleep(3.5)
-    driver.select_from_dropdown(Locators.REGISTRATION_STATE, register_data["state"])
+    driver.select_from_dropdown(Locators.REGISTRATION_STATE, REGISTER_DATA["state"])
     time.sleep(3.5)
-    driver.select_from_dropdown(Locators.REGISTRATION_CITY, register_data["city"])
-    driver.safe_send_keys(register_data["address"], Locators.REGISTRATION_ZIP_CODE)
+    driver.select_from_dropdown(Locators.REGISTRATION_CITY, REGISTER_DATA["city"])
+    driver.safe_send_keys(REGISTER_DATA["address"], Locators.REGISTRATION_ZIP_CODE)
 
 
 @allure.step

@@ -75,3 +75,14 @@ module = [
     "requests"
 ]
 ignore_missing_imports = true
+
+
+[tool.pytest.ini_options]
+minversion = "2.0"
+python_files = ["test_*.py"]
+markers = [
+    "login: Login tests",
+    "register: Registration tests",
+    "generate_user: Generate user tests",
+    "api: Api tests that don't support GUI",
+]

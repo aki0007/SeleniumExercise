@@ -1,6 +1,6 @@
 import pytest
 
-from tests.api.login_helper import login_request
+from base.helpers.login_api import login_request
 
 
 @pytest.mark.api

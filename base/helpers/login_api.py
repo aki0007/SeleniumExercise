@@ -3,14 +3,14 @@ from typing import Any, Optional
 import requests
 from requests import Response
 
-from base.data import login_data
+from base.data import LOGIN_DATA
 from config import config
 
 
 def login_request(url: str = None, data: dict = None) -> None:
     # Api login request
     url = url if url else config.GLOBAL_URL + config.TESTING_URL
-    data = data if data else login_data
+    data = data if data else LOGIN_DATA
     body_template: Optional[dict[Any, Any]] = {
         "_hidCheckSubmit": 2,
         "_txtUserName": data["username"],

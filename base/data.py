@@ -1,8 +1,8 @@
-register_data = {
+REGISTER_DATA = {
     "username": "Aki",
     "email": "test@test.com",
     "password": "test123",
-    "dob": "8 July 1990",
+    "dob": "8 July 2020",
     "phone": "0981234567",
     "address": "Ulica Ljube Gavrančića",
     "address_type": ["home", "office"],
@@ -14,4 +14,4 @@ register_data = {
 }
 
 
-login_data = {"username": "Aki", "password": "golubica123"}
+LOGIN_DATA = {"username": "Aki", "password": "golubica123"}

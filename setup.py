@@ -9,10 +9,10 @@ setup(
     packages=["foo"],  # same as name
     install_requires=[
         "allure-behave",
-        "allure-pytest",
+        "allure-gui",
         "allure-python-commons",
         "behave",
-        "pytest",
+        "gui",
         "selenium",
         "requests",
         "pre-commit",
