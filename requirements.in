@@ -2,8 +2,8 @@ allure-behave
 allure-pytest
 allure-python-commons
 behave
+dotenv
 pytest
+python-dotenv
 requests
 selenium
-virtualenv
-pre-commit

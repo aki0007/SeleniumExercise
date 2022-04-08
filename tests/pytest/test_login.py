@@ -1,6 +1,6 @@
 import pytest
 import time
-from base.utils import read_config_data
+
 from tests.helpers.login_helper import (
     set_registration_personal_details,
     select_register_dropdown_options,
@@ -15,7 +15,7 @@ from tests.validation.validate_login import validate_login, validate_random_user
 @pytest.mark.register
 def test_register_new_user(driver, close_driver):
     # Navigate to page
-    driver.set_window(read_config_data("Details", "URL"))
+    driver.set_window()
     # Set personal data information
     set_registration_personal_details(driver)
     # Set information from dropdowns
@@ -30,7 +30,7 @@ def test_register_new_user(driver, close_driver):
 @pytest.mark.login
 def test_login(driver, close_driver):
     # Navigate to page
-    driver.set_window(read_config_data("Details", "URL"))
+    driver.set_window()
     # Login to page
     login_with_username_and_password(driver)
     # Validate login
@@ -42,7 +42,7 @@ def test_login(driver, close_driver):
 @pytest.mark.generate_user
 def test_generate_user(driver, close_driver):
     # Navigate to page
-    driver.set_window(read_config_data("Details", "URL"))
+    driver.set_window()
     # Login to page
     login_with_username_and_password(driver)
     # Validate login

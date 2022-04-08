@@ -1,10 +1,10 @@
+from config import config
 import requests
 from base.data import login_data
-from base.utils import read_config_data
 
 
 def login_request(url=None, data=None):
-    url = url if url else read_config_data("Details", "URL")
+    url = url if url else config.GLOBAL_URL + config.TESTING_URL
     data = data if data else login_data
     body_template = {'_hidCheckSubmit': 2,
                      '_txtUserName': data["username"],

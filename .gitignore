@@ -29,6 +29,7 @@ pip-delete-this-directory.txt
 .cache
 nosetests.xml
 coverage.xml
-screenshot
-allure-report
+reports
+.env
 demo.py
+requirements.txt

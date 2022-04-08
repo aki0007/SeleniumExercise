@@ -1,5 +1,6 @@
-from datetime import date
+from datetime import datetime
 
+from config import config
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
@@ -8,16 +9,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementNotInteractableException, TimeoutException
 from selenium.webdriver.support.ui import Select
 
-from base.utils import read_config_data
-
 
 class WebDriver(Chrome):
-    def set_window(self, url):
-        self.get(url)
+    def set_window(self):
+        self.get(config.GLOBAL_URL + config.TESTING_URL)
         self.maximize_window()
 
-    def get_element(self, locator, highlight=True):
+    def get_element(self, locator, highlight=True, clickable=True):
         try:
+            # Wait until element is clickable
+            if clickable:
+                WebDriverWait(self, 5).until(
+                    EC.element_to_be_clickable((By.XPATH, locator))
+                )
+
             # Wait until element is clickable
             element = WebDriverWait(self, 5).until(
                 EC.presence_of_element_located((By.XPATH, locator))
@@ -81,7 +86,7 @@ class WebDriver(Chrome):
             assert False, "wait_for_loader_to_load(): TimeoutException"
 
     def take_screenshot(self):
-        today = date.today()
-        path = read_config_data("Details", "SCREENSHOT")
-        ss_path = path + today.strftime("%d-%m-%Y") + ".png"
-        self.get_screenshot_as_file(ss_path)
+        screenshot_name: str = (
+                "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
+        )
+        self.save_screenshot(config.SCREENSHOT_PATH + "/" + screenshot_name)

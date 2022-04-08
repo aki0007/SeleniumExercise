@@ -2,7 +2,7 @@ from behave import *
 import logging
 
 from base.locators import Locators
-from base.utils import read_config_data
+from config import config
 from tests.helpers.login_helper import (
     set_registration_personal_details,
     select_register_dropdown_options,
@@ -18,7 +18,7 @@ logging.basicConfig()
 
 @given(u'Navigate to testing page')
 def navigate_to_page_step(context):
-    context.driver.set_window(read_config_data("Details", "URL"))
+    context.driver.set_window()
 
 
 @when(u'Send registration params')
@@ -35,8 +35,8 @@ def send_registration_params_step(context):
 
 @when(u'Login to page with username "{username}" and password "{password}"')
 def login_to_page_step(context, username, password):
-    username = None if username == "None" else username
-    password = None if password == "None" else password
+    username = username if username != "None" else config.LOGIN_USERNAME
+    password = password if password != "None" else config.LOGIN_PASSWORD
 
     # Login with username and password
     login_with_username_and_password(context.driver, username, password)
