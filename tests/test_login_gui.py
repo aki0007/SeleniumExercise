@@ -1,8 +1,7 @@
 import time
-
 import pytest
 
-from tests.helpers.login_helper import (
+from base.helpers.login_gui import (
     accept_terms_and_conditions,
     click_sign_up_button,
     get_random_user,
@@ -10,7 +9,7 @@ from tests.helpers.login_helper import (
     select_register_dropdown_options,
     set_registration_personal_details,
 )
-from tests.validation.validate_login import validate_login, validate_random_user
+from base.helpers.validate_login_gui import validate_login, validate_random_user
 
 
 @pytest.mark.register
@@ -52,6 +51,6 @@ def test_generate_user(driver, close_driver):
     get_random_user(driver)
     # Validate random user
     validate_random_user(driver)
-    # Take SS from pytest
+    # Take SS from gui
     driver.take_screenshot()
     time.sleep(2)

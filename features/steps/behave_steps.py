@@ -6,7 +6,7 @@ from behave.runner import Context
 
 from base.locators import Locators
 from config import config
-from tests.helpers.login_helper import (
+from base.helpers.login_gui import (
     accept_terms_and_conditions,
     click_sign_up_button,
     get_random_user,
@@ -14,7 +14,7 @@ from tests.helpers.login_helper import (
     select_register_dropdown_options,
     set_registration_personal_details,
 )
-from tests.validation.validate_login import validate_login, validate_random_user
+from base.helpers.validate_login_gui import validate_login, validate_random_user
 
 logging.basicConfig()
 

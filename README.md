@@ -18,9 +18,9 @@ Install dependencies
 
 Run behave tests examples:
 
-    behave tests/features # Run all behave tests
-    behave tests/features/login.feature  # Run login.feature tests
-    behave tests/features/login.feature  # Run login.feature tests
+    behave features # Run all behave tests
+    behave features/login.feature  # Run login.feature tests
+    behave features/login.feature  # Run login.feature tests
 
 Run test and generate allure report
 
