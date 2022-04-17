@@ -13,7 +13,7 @@ from base.helpers.validate_login_gui import validate_login, validate_random_user
 
 
 @pytest.mark.register
-def test_register_new_user(driver, close_driver):
+def test_register_new_user(driver):
     # Navigate to page
     driver.set_window()
     # Set personal data information
@@ -28,7 +28,7 @@ def test_register_new_user(driver, close_driver):
 
 
 @pytest.mark.login
-def test_login(driver, close_driver):
+def test_login(driver):
     # Navigate to page
     driver.set_window()
     # Login to page
@@ -40,7 +40,7 @@ def test_login(driver, close_driver):
 
 @pytest.mark.login
 @pytest.mark.generate_user
-def test_generate_user(driver, close_driver):
+def test_generate_user(driver):
     # Navigate to page
     driver.set_window()
     # Login to page
