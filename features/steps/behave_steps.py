@@ -5,7 +5,7 @@ from behave import given, then, when
 from behave.runner import Context
 
 from base.locators import Locators
-from config import config
+from config import conf_obj
 from base.helpers.login_gui import (
     accept_terms_and_conditions,
     click_sign_up_button,
@@ -41,8 +41,8 @@ def send_registration_params_step(context: Context) -> None:
 @allure.step
 @when('Login to page with username "{username}" and password "{password}"')
 def login_to_page_step(context: Context, username: str, password: str) -> None:
-    username = username if username != "None" else config.LOGIN_USERNAME
-    password = password if password != "None" else config.LOGIN_PASSWORD
+    username = username if username != "None" else conf_obj.LOGIN_USERNAME
+    password = password if password != "None" else conf_obj.LOGIN_PASSWORD
 
     # Login with username and password
     login_with_username_and_password(context.driver, username, password)

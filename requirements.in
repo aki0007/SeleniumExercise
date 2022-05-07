@@ -2,7 +2,7 @@ allure-behave
 allure-pytest
 allure-python-commons
 behave
-dotenv
+python-dotenv
 pytest
 python-dotenv
 requests
