@@ -9,12 +9,12 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select, WebDriverWait
 
-from config import config
+from config import conf_obj
 
 
 class WebDriver(Chrome):
     def set_window(self) -> None:
-        self.get(config.GLOBAL_URL + config.TESTING_URL)
+        self.get(conf_obj.GLOBAL_URL + conf_obj.TESTING_URL)
         self.maximize_window()
 
     def get_element(self, locator: str, clickable: bool = True, highlight: bool = True):
@@ -94,4 +94,4 @@ class WebDriver(Chrome):
         screenshot_name: str = (
             "screenshot" + datetime.now().strftime("%H:%M:%S") + ".png"
         )
-        self.save_screenshot(config.SCREENSHOT_PATH + "/" + screenshot_name)
+        self.save_screenshot(conf_obj.SCREENSHOT_PATH + "/" + screenshot_name)
