@@ -1,56 +1,52 @@
 import time
 import pytest
 
-from base.helpers.login_gui import (
-    accept_terms_and_conditions,
-    click_sign_up_button,
-    get_random_user,
-    login_with_username_and_password,
-    select_register_dropdown_options,
-    set_registration_personal_details,
-)
-from base.helpers.validate_login_gui import validate_login, validate_random_user
+from base.pom.login import LoginPage
+from base.pom.register import RegisterPage
+from base.pom.generate_user import GenerateUserPage
 
 
 @pytest.mark.register
-def test_register_new_user(driver):
+def test_register_new_user(wp):
     # Navigate to page
-    driver.set_window()
+    register_page: RegisterPage = RegisterPage(wp)
+    register_page.set_up_window()
     # Set personal data information
-    set_registration_personal_details(driver)
+    register_page.set_registration_personal_details()
     # Set information from dropdowns
-    select_register_dropdown_options(driver)
+    register_page.select_register_dropdown_options()
     # Accept terms and conditions
-    accept_terms_and_conditions(driver)
+    register_page.accept_terms_and_conditions()
     # Click on sign up button
-    click_sign_up_button(driver)
+    register_page.click_sign_up_button()
     time.sleep(2)
 
 
 @pytest.mark.login
-def test_login(driver):
-    # Navigate to page
-    driver.set_window()
+def test_login(wp) -> None:
     # Login to page
-    login_with_username_and_password(driver)
+    login_page: LoginPage = LoginPage(wp)
+    login_page.set_up_window()
+    login_page.login_with_username_and_password()
     # Validate login
-    validate_login(driver)
+    login_page.validate_login()
     time.sleep(2)
 
 
 @pytest.mark.login
 @pytest.mark.generate_user
-def test_generate_user(driver):
+@pytest.mark.test1
+def test_generate_user(wp):
+    login_page: LoginPage = LoginPage(wp)
+    generate_user_page: GenerateUserPage = GenerateUserPage(wp)
     # Navigate to page
-    driver.set_window()
+    login_page.set_up_window()
     # Login to page
-    login_with_username_and_password(driver)
+    login_page.login_with_username_and_password()
     # Validate login
-    validate_login(driver)
+    login_page.validate_login()
     # Get random user
-    get_random_user(driver)
+    generate_user_page.get_random_user()
     # Validate random user
-    validate_random_user(driver)
-    # Take SS from gui
-    driver.take_screenshot()
-    time.sleep(2)
+    generate_user_page.validate_random_user()
+

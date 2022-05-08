@@ -85,4 +85,5 @@ markers = [
     "register: Registration tests",
     "generate_user: Generate user tests",
     "api: Api tests that don't support GUI",
+    "test1: run just one test"
 ]
