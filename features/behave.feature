@@ -19,8 +19,7 @@ Feature: Run tests with behave
     When Login to page with username "None" and password "None"
     Then Validate successful login
     When Navigate to "My Account", "Manage Customer" in navigation tab
-    And Click on "Start Download" button
+    And Start download
     Then Wait for progress loader to load
     And Validate successful download
-    Then Take screenshot
-    When Click on "Close" button
+    Then Close button

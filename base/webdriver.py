@@ -40,7 +40,6 @@ class WebDriver(get_webdriver()):  # type: ignore
                     "arguments[0].setAttribute(" "'style', 'background: yellow;');",
                     element,
                 )
-
             return self.find_element(By.XPATH, locator)
         # Not intractable element exception
         except ElementNotInteractableException:
