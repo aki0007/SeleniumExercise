@@ -1,0 +1,18 @@
+1651998840846	geckodriver	INFO	Listening on 127.0.0.1:39481
+1651998841352	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "45597" "-no-remote" "-profile" "/tmp/rust_mozprofileB8Z0E2"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1651998841931	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileB8Z0E2/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:45597/devtools/browser/700d4fce-0c4c-40d8-9cf6-01a8f842fd02
+1651998842783	Marionette	INFO	Listening on port 39973
+1651998842870	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1651998849326	Marionette	INFO	Stopped listening on port 39973
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1651998849749	geckodriver::marionette	ERROR	Failed to close browser connection: Transport endpoint is not connected (os error 107)
