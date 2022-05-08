@@ -4,7 +4,7 @@ from base.webdriver import WebDriver
 
 
 class NavigationPage(object):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         # It is necessary to initialise driver as page class member to implement Webdriver
         self.driver: WebDriver = driver
 

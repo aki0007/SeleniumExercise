@@ -6,7 +6,7 @@ from base.data import LOGIN_DATA
 
 
 class LoginPage(object):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         # It is necessary to initialise driver as page class member to implement Webdriver
         self.driver: WebDriver = driver
 
@@ -18,7 +18,7 @@ class LoginPage(object):
             "//em[text()='Keep me logged in ']/preceding-sibling::input"
         )
     LOGIN_BUTTON: str = "//input[@value='Login']"
-    VALIDATE_SUCCESSFUL_LOGIN = "//*[text() = ' Welcome Mr. {username}']"
+    VALIDATE_SUCCESSFUL_LOGIN: str = "//*[text() = ' Welcome Mr. {username}']"
 
     @allure.step
     def set_up_window(self) -> None:
@@ -33,8 +33,8 @@ class LoginPage(object):
             return
 
         # Choose default username and password if they are not defined
-        username = LOGIN_DATA["username"] if not username else username
-        password = LOGIN_DATA["password"] if not password else password
+        username: str = LOGIN_DATA["username"] if not username else username
+        password: str = LOGIN_DATA["password"] if not password else password
 
         # Click on Login tab
         self.driver.get_element(self.LOGIN_TAB).click()

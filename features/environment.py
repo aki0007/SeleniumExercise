@@ -21,7 +21,7 @@ def wp() -> Iterator[WebDriver]:
     return WebDriver(options=driver_options)
 
 
-def before_all(context):
+def before_all(context) -> None:
     # Create a screenshot path if it does not exist
     if not os.path.exists(conf_obj.SCREENSHOT_PATH):
         os.makedirs(conf_obj.SCREENSHOT_PATH)
@@ -34,5 +34,5 @@ def before_all(context):
     context.navigation_page = NavigationPage(context.driver)
 
 
-def after_all(context):
+def after_all(context) -> None:
     context.driver.quit()

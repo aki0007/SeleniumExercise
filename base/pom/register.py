@@ -10,12 +10,12 @@ from base.helpers.utils import calculate_number_of_clicks
 
 
 class RegisterPage(object):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         # It is necessary to initialise driver as page class member to implement Webdriver
         self.driver: WebDriver = driver
 
-    CALENDAR_LEFT_ARROW = "//a[@data-handler='prev']"
-    CALENDAR_SELECT_DATE = "//td[@data-handler='selectDay']//a[text()='{date}']"
+    CALENDAR_LEFT_ARROW: str = "//a[@data-handler='prev']"
+    CALENDAR_SELECT_DATE: str = "//td[@data-handler='selectDay']//a[text()='{date}']"
     REGISTRATION_USERNAME: str = "//input[@placeholder='myusername']"
     REGISTRATION_EMAIL: str = "//input[@name='fld_email']"
     REGISTRATION_PASSWORD: str = "//input[@placeholder='Password']"
@@ -32,7 +32,7 @@ class RegisterPage(object):
     REGISTRATION_TERMS_AND_CONDITIONS: str = (
         "//em[text()='I agree with terms and conditions ']/preceding-sibling::input"
     )
-    SIGN_UP_BUTTON = "//input[@value='Sign up']"
+    SIGN_UP_BUTTON: str = "//input[@value='Sign up']"
 
     @allure.step
     def set_up_window(self) -> None:

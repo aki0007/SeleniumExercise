@@ -6,17 +6,17 @@ from base.enums import HomeTab, NavigationTab
 
 
 class GenerateUserPage(object):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         # It is necessary to initialise driver as page class member to implement Webdriver
         self.driver: WebDriver = driver
 
-    GET_NEW_USER_BUTTON = "//button[text()='Get New User']"
-    NAVIGATION_TAB = "//li[descendant::a[contains(text(), '{tab}')]]"
+    GET_NEW_USER_BUTTON: str = "//button[text()='Get New User']"
+    NAVIGATION_TAB: str = "//li[descendant::a[contains(text(), '{tab}')]]"
 
-    SUB_NAVIGATION_TAB = (
+    SUB_NAVIGATION_TAB: str = (
         "//ul[@class='dropdown-menu']//li[descendant::a[contains(text(), '{tab}')]]"
     )
-    VALIDATE_GENERATED_USER = "//div[contains(text(), 'First Name')]"
+    VALIDATE_GENERATED_USER: str = "//div[contains(text(), 'First Name')]"
 
     @allure.step
     def get_random_user(self) -> None:

@@ -4,12 +4,12 @@ from base.webdriver import WebDriver
 
 
 class ManageCustomerPage(object):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         # It is necessary to initialise driver as page class member to implement Webdriver
         self.driver: WebDriver = driver
 
     CLOSE_DOWNLOAD_BUTTON: str = "//button[text()='Close']"
-    START_DOWNLOAD_BUTTON: str  = "//button[text()='Start Download']"
+    START_DOWNLOAD_BUTTON: str = "//button[text()='Start Download']"
     PROGRESS_LOADER: str = "//div[contains(text(), 'Current Progress')]"
     PROGRESS_COMPLETE: str = "//div[text()='Complete!']"
 

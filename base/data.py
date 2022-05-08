@@ -1,4 +1,4 @@
-REGISTER_DATA = {
+REGISTER_DATA: dict = {
     "username": "Aki",
     "email": "test@test.com",
     "password": "test123",
@@ -14,4 +14,4 @@ REGISTER_DATA = {
 }
 
 
-LOGIN_DATA = {"username": "Aki", "password": "golubica123"}
+LOGIN_DATA: dict = {"username": "Aki", "password": "golubica123"}
